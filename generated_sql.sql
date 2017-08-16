@@ -2,6 +2,15 @@ CREATE DATABASE cake_queenofcandyland;
 
 USE cake_queenofcandyland;
 
+CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(255),
+    role VARCHAR(20),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
 CREATE TABLE representatives (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,

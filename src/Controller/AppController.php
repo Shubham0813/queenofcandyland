@@ -39,10 +39,10 @@ class AppController extends Controller
      */
     public function initialize()
     {
-        parent::initialize();
+        // parent::initialize();
 
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
+        // $this->loadComponent('RequestHandler');
+        // $this->loadComponent('Flash');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -50,8 +50,23 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+        $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Home',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ]
+        ]);
     }
 
+    public function beforeFilter(Event $event)
+        {
+            $this->Auth->allow(['index', 'view', 'display']);
+        }
     /**
      * Before render callback.
      *
