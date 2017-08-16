@@ -6,7 +6,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +39,7 @@ use Cake\Network\Exception\NotFoundException;
                 <thead>
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('quantity_on_hand') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('minimum_reorder_point') ?></th>
                     </tr>
@@ -48,6 +48,7 @@ use Cake\Network\Exception\NotFoundException;
                     <?php foreach ($items as $item): ?>
                     <tr>
                         <td><?= $this->Number->format($item->id) ?></td>
+                        <td><?= h($item->name) ?></td>
                         <td><?= $this->Number->format($item->quantity_on_hand) ?></td>
                         <td><?= $this->Number->format($item->minimum_reorder_point) ?></td>
                     </tr>
