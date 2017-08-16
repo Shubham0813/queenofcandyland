@@ -6,6 +6,7 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
