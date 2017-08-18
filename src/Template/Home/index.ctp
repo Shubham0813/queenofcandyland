@@ -40,6 +40,7 @@ use Cake\Network\Exception\NotFoundException;
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('vendor') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('quantity_on_hand') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('minimum_reorder_point') ?></th>
                     </tr>
@@ -49,6 +50,14 @@ use Cake\Network\Exception\NotFoundException;
                     <tr>
                         <td><?= $this->Number->format($item->id) ?></td>
                         <td><?= h($item->name) ?></td>
+                        
+                        <?php 
+                            foreach ($vendors as $vendor) {
+                                if ($vendor->id == $item->vendor_id)
+                                    echo "<td>$vendor->name</td>";
+                            }
+                        ?>                       
+                        
                         <td><?= $this->Number->format($item->quantity_on_hand) ?></td>
                         <td><?= $this->Number->format($item->minimum_reorder_point) ?></td>
                     </tr>
