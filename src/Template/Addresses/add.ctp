@@ -14,7 +14,7 @@
 <div class="addresses form large-9 medium-8 columns content">
     <?= $this->Form->create($address) ?>
     <fieldset>
-        <legend><?= __('Add Address') ?></legend>
+        <legend class="legend"><?= __('Add Address') ?></legend>
         <?php
             echo $this->Form->control('unit');
             echo $this->Form->control('street');

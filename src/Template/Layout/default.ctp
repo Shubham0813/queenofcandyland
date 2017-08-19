@@ -28,28 +28,37 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('style.css') ?>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><?= $this->Html->link(__('HOME'), ['action' => 'goHome']) ?></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-            </ul>
-        </div>
-    </nav>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      
+         <?= $this->Html->link(__('HOME'), ['action' => 'goHome'],
+                                        ['class' => 'w3-bar-item w3-button w3-theme-l1']
+        ) ?>
+         <?= $this->Html->link('LOGOUT', '/users/logout',
+                                    ['class' => 'w3-bar-item w3-button w3-theme-l1']
+        ) ?>
+      </div>
+    </div>
+
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    <div class="w3-container w3-teal">
         <?= $this->fetch('content') ?>
     </div>
-    <footer>
-    </footer>
+
+
 </body>
 </html>

@@ -18,7 +18,7 @@
 <div class="vendors form large-9 medium-8 columns content">
     <?= $this->Form->create($vendor) ?>
     <fieldset>
-        <legend><?= __('Add Vendor') ?></legend>
+        <legend class="legend"><?= __('Add Vendor') ?></legend>
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('address_id', ['options' => $addresses]);

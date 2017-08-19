@@ -16,7 +16,7 @@
 <div class="orders form large-9 medium-8 columns content">
     <?= $this->Form->create($order) ?>
     <fieldset>
-        <legend><?= __('Add Order') ?></legend>
+        <legend class="legend"><?= __('Add Order') ?></legend>
         <?php
             echo $this->Form->control('timestamp', ['empty' => true]);
             echo $this->Form->control('tracking_link');

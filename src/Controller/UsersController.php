@@ -14,11 +14,18 @@ use Cake\Event\Event;
 class UsersController extends AppController
 {
 
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-        $this->Auth->allow('add');
-    }
+    // public function beforeFilter(Event $event)
+    // {
+    //     parent::beforeFilter($event);
+    //     //$this->Auth->allow('login', 'add');
+    //     $user = $this->Auth->user();
+
+    //     if ($user['role'] == 'admin') {
+    //         $this->Auth->allow(['index', 'view', 'add', 'edit', 'delete']);
+    //     } else {
+    //         $this->Auth->allow(['index']);
+    //     } 
+    // }
 
     /**
      * Index method
