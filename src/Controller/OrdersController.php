@@ -2,7 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
 /**
  * Orders Controller
  *
@@ -54,6 +55,29 @@ class OrdersController extends AppController
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
+                // 
+                $items = $this->Orders->Items->find('list', ['limit' => 200]);
+                foreach($items as $item) {
+                    if(($q = $this->request->getData('q'.trim($item))) != null) {
+                        $connection = ConnectionManager::get('default');   
+                        $results = $connection
+                            ->newQuery()
+                            ->select('id')
+                            ->from('items')
+                            ->where(['name' => $item])
+                            ->execute()
+                            ->fetchAll('assoc');
+                        $itemID = $results[0]['id'];
+                                                
+                        $connection->insert('items_orders', [
+                            'item_id' => $itemID,
+                            'order_id' => $order->id,
+                            'quantity' => $q,
+                            'created' => new \DateTime('now')
+                        ], ['created' => 'datetime']);
+                    }
+                }
+                //
                 $this->Flash->success(__('The order has been saved.'));
 
                 return $this->redirect(['action' => 'index']);

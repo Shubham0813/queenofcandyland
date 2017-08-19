@@ -2,6 +2,8 @@
 /**
   * @var \App\View\AppView $this
   */
+  use Cake\Datasource\ConnectionManager;
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -19,7 +21,12 @@
             echo $this->Form->control('timestamp', ['empty' => true]);
             echo $this->Form->control('tracking_link');
             echo $this->Form->control('tracking_phone_number');
-            echo $this->Form->control('items._ids', ['options' => $items]);
+
+            foreach ($items as $i) {
+                echo $i;
+                echo $this->Form->control('quantity', ['name' => 'q'.trim($i)]);
+            }
+
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
